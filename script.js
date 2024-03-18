@@ -15,7 +15,7 @@ function formatTime(seconds) {
 
 let getsongs = async (folder) => {
     currfolder = folder;
-    let a = await fetch(`https://github.com/suprasan-26/spotify-clone/tree/e9ae96903f91c51d1b422bb6ced30ed02c923288/songs/${folder}/`);
+    let a = await fetch(`/songs/${folder}/`);
     console.log(a)
     let response = await a.text();
     let div = document.createElement("div")
@@ -146,7 +146,7 @@ let main = async () => {
     })
 
     let updatecard=async()=>{
-        let x= await fetch(`https://github.com/suprasan-26/spotify-clone/tree/e9ae96903f91c51d1b422bb6ced30ed02c923288/songs/`)
+        let x= await fetch(`/songs/`)
         let response=await x.text();
         let div= document.createElement("div")
         div.innerHTML=response;
@@ -158,7 +158,7 @@ let main = async () => {
             const e=arr[i];
             if(e.href.includes("/songs/")){
                 let folder=e.href.split("/").slice(-2)[1]
-                let xyz=await fetch(`https://github.com/suprasan-26/spotify-clone/tree/e9ae96903f91c51d1b422bb6ced30ed02c923288/songs/${folder}/info.json`)
+                let xyz=await fetch(`/songs/${folder}/info.json`)
                 let response=await xyz.json()
                 cardcontainer.innerHTML=cardcontainer.innerHTML+` <div class="card" data-folder="${response.data}">
                 <img src="/songs/${folder}/cover.jpeg" alt="">
