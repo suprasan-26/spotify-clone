@@ -5,7 +5,7 @@ let currfolder
 
 function formatTime(seconds) {
     if (seconds == NaN) {
-        return ("00 : 00")
+        return "00 : 00"
     }
     var minutes = Math.floor(seconds / 60);
     var remainingSeconds = Math.floor(seconds % 60);
@@ -15,7 +15,7 @@ function formatTime(seconds) {
 
 let getsongs = async (folder) => {
     currfolder = folder;
-    let a = await fetch(`https://suprasan-26.github.io/${folder}/`)
+    let a = await fetch(`http://127.0.0.1:5500/${folder}/`)
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
@@ -24,7 +24,7 @@ let getsongs = async (folder) => {
     for (let i = 0; i < atag.length; i++) {
         const element = atag[i];
         if (element.href.endsWith("mp3")) {
-            songs.push(element.hrefsplit(`/${folder}/`)[1])
+            songs.push(element.href.split(`/${folder}/`)[1])
         }
     }
     let ul = document.querySelector(".songs-list").getElementsByTagName("ul")[0]
@@ -83,7 +83,7 @@ let main = async () => {
     // adding next button
     let next = document.getElementById("next")
     next.addEventListener("click", (e) => {
-        let index = songs.indexOf(currentsong.srcsplit(`/${currfolder}/`)[1])
+        let index = songs.indexOf(currentsong.src.split(`/${currfolder}/`)[1])
         if (index + 1 < songs.length) {
             playmusic(songs[index + 1], true)
             changebtn.src = "pause.svg"
@@ -145,7 +145,7 @@ let main = async () => {
     })
 
     let updatecard=async()=>{
-        let x= await fetch(`https://suprasan-26.github.io/songs/`)
+        let x= await fetch(`http://127.0.0.1:5500/songs/`)
         let response=await x.text();
         let div= document.createElement("div")
         div.innerHTML=response;
@@ -157,10 +157,10 @@ let main = async () => {
             const e=arr[i];
             if(e.href.includes("/songs/")){
                 let folder=e.href.split("/").slice(-2)[1]
-                let xyz=await fetch(`https://suprasan-26.github.io/songs/${folder}/info.json`)
+                let xyz=await fetch(`http://127.0.0.1:5500/songs/${folder}/info.json`)
                 let response=await xyz.json()
                 cardcontainer.innerHTML=cardcontainer.innerHTML+` <div class="card" data-folder="${response.data}">
-                <img src="https://suprasan-26.github.io/songs/${folder}/cover.jpeg" alt="">
+                <img src="http://127.0.0.1:5500/songs/${folder}/cover.jpeg" alt="">
                 <h3>${response.heading}</h3>
                 <p>${response.description}</p>
                 <div class="play "><svg class="invert" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="35" height="35" fill="magenta">
