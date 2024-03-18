@@ -24,7 +24,7 @@ let getsongs = async (folder) => {
     for (let i = 0; i < atag.length; i++) {
         const element = atag[i];
         if (element.href.endsWith("mp3")) {
-            songs.push(element.href.replace(`https://suprasan-26.github.io/${folder}/`, ""))
+            songs.push(element.hrefsplit(`/${folder}/`)[1])
         }
     }
     let ul = document.querySelector(".songs-list").getElementsByTagName("ul")[0]
@@ -73,7 +73,7 @@ let main = async () => {
     // adding previous button
     let previous = document.getElementById("previous")
     previous.addEventListener("click", (e) => {
-        let index = songs.indexOf(currentsong.src.replace(`https://suprasan-26.github.io/${folder}/`, ""))
+        let index = songs.indexOf(currentsong.src.split(`/${folder}/`)[1])
         if (index > 0) {
             playmusic(songs[index - 1], true)
             changebtn.src = "pause.svg"
@@ -83,7 +83,7 @@ let main = async () => {
     // adding next button
     let next = document.getElementById("next")
     next.addEventListener("click", (e) => {
-        let index = songs.indexOf(currentsong.src.replace(`https://suprasan-26.github.io/${currfolder}/`, ""))
+        let index = songs.indexOf(currentsong.srcsplit(`/${currfolder}/`)[1])
         if (index + 1 < songs.length) {
             playmusic(songs[index + 1], true)
             changebtn.src = "pause.svg"
@@ -91,7 +91,7 @@ let main = async () => {
     })
     //automatic changing the song after current song ends
     currentsong.addEventListener("ended", () => {
-        let index = songs.indexOf(currentsong.src.replace(`https://suprasan-26.github.io/${currfolder}/`, ""))
+        let index = songs.indexOf(currentsong.src.split(`/${currfolder}/`)[1])
         if (index + 1 < songs.length) {
             playmusic(songs[index + 1], true)
         }
