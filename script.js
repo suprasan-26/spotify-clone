@@ -73,7 +73,7 @@ let main = async () => {
     // adding previous button
     let previous = document.getElementById("previous")
     previous.addEventListener("click", (e) => {
-        let index = songs.indexOf(currentsong.src.split(`/${folder}/`)[1])
+        let index = songs.indexOf(currentsong.src.split(`/${currfolder}/`)[1])
         if (index > 0) {
             playmusic(songs[index - 1], true)
             changebtn.src = "pause.svg"
