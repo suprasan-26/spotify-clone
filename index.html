@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Clone</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="utilities.css">
+
+</head>
+
+<body>
+    <div class="container flex">
+        <div class="left-side border ">
+            <div class="home bg-grey ">
+                <img class="cross invert pointer" src="svg\cross.svg" >
+                <img class="invert" src="svg\logo.svg" alt="spotify logo">
+                <ul>
+                    <li><img class="invert" src="svg\home.svg" alt=home>Home</li>
+                    <li><img class="invert" src="svg\search.svg" alt=search>search</li>
+                </ul>
+            </div>
+            <div class="library bg-grey">
+                <div class="heading">
+                    <img class="invert" src="svg\library.svg">
+                    <h2>Your Library</h2>
+                </div>
+                <div class="songs-list">
+                    <ul>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="right-side border bg-grey">
+            <div class="header">
+                <div class="navbar">
+                    <img class="hamburger invert pointer" src="svg\hamburger.svg">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20"
+                            height="20" color="#ffffff" fill="none">
+                            <path d="M15 6C15 6 9.00001 10.4189 9 12C8.99999 13.5812 15 18 15 18" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20"
+                            height="20" color="#ffffff" fill="none">
+                            <path d="M9.00005 6C9.00005 6 15 10.4189 15 12C15 13.5812 9 18 9 18" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                </div>
+                <div class="button">
+                    <button class=" login-btn ">log in</button>
+                    <button class=" signup-btn">Sign up</button>
+                </div>
+            </div>
+            <div class="spotify-playlist">
+                <h2>Spotify Playlist</h2>
+                <div class="card-container">
+                </div>
+            </div>
+            <div class="playbar">
+                <div class="seekbar pointer">
+                    <div class="circle"></div>
+                </div>
+                <div class="song-des flex align-item">
+                    <div class="song-desc"></div>
+                    <div class="song-button">
+                        <img class="invert pointer" id="previous"  src="svg\prev.svg">
+                        <img class="invert pointer" id="play"  src="svg\play.svg">
+                        <img class="invert pointer"  id="next" src="svg\next.svg">
+                    </div>
+                    <div class="seekbar-right">
+                        <img class="invert mute pointer" src="svg\mute.svg">
+                        <img class="invert unmute pointer" src="svg\volume.svg">
+                        <div class="volume">
+                            <input type="range" value="100">
+                        </div>
+                        <div class="song-duration"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
