@@ -15,7 +15,7 @@ function formatTime(seconds) {
 
 let getsongs = async (folder) => {
     currfolder = folder;
-    let a = await fetch(`http://127.0.0.1:5500/${folder}/`)
+    let a = await fetch(`/${folder}/`)
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
@@ -145,7 +145,7 @@ let main = async () => {
     })
 
     let updatecard=async()=>{
-        let x= await fetch(`http://127.0.0.1:5500/songs/`)
+        let x= await fetch(`/songs/`)
         let response=await x.text();
         let div= document.createElement("div")
         div.innerHTML=response;
@@ -157,10 +157,10 @@ let main = async () => {
             const e=arr[i];
             if(e.href.includes("/songs/")){
                 let folder=e.href.split("/").slice(-2)[1]
-                let xyz=await fetch(`http://127.0.0.1:5500/songs/${folder}/info.json`)
+                let xyz=await fetch(`/songs/${folder}/info.json`)
                 let response=await xyz.json()
                 cardcontainer.innerHTML=cardcontainer.innerHTML+` <div class="card" data-folder="${response.data}">
-                <img src="http://127.0.0.1:5500/songs/${folder}/cover.jpeg" alt="">
+                <img src="/songs/${folder}/cover.jpeg" alt="">
                 <h3>${response.heading}</h3>
                 <p>${response.description}</p>
                 <div class="play "><svg class="invert" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="35" height="35" fill="magenta">
