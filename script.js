@@ -15,7 +15,7 @@ function formatTime(seconds) {
 
 let getsongs = async (folder) => {
     currfolder = folder;
-    let a = await fetch(`http://127.0.0.1:5500/${folder}/`)
+    let a = await fetch(`https://suprasan-26.github.io/spotify-clone/songs/${folder}/`)
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
