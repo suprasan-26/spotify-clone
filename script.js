@@ -156,7 +156,7 @@ let main = async () => {
        
         for(let i=0;i<arr.length;i++){
             const e=arr[i];
-            if(e.href.includes("/songs/") && !e.href.includes(".htaccess)){
+            if(e.href.includes("/songs") && !e.href.includes(".htaccess)){
                 let folder=e.href.split("/").slice(-2)[1]
                 let xyz=await fetch(`/songs/${folder}/info.json`)
                 let response=await xyz.json()
